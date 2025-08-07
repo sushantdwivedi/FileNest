@@ -112,12 +112,3 @@ bun install
 bun dev
 ```
 
-
----
-
-Let me know if you’d like:
-- GitHub badges (e.g., build passing, license)
-- A version with working screenshot placeholders
-- A CONTRIBUTING.md file or LICENSE template
-
-Or I can help you scaffold the repo from scratch if you want to publish it right.
