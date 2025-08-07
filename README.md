@@ -78,8 +78,11 @@
 
 ---
 
+---
+
 ## 🧰 Project Structure
 
+```plaintext
 components/
 ├── FilePickerButton.tsx
 ├── FilePreview.tsx
@@ -88,6 +91,9 @@ components/
 
 lib/
 └── supabaseClient.ts
+
+App.tsx
+```
 
 
 
