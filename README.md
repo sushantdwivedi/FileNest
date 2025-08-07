@@ -1,50 +1,118 @@
-# Welcome to your Expo app 👋
+# 📁 FileNest
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**FileNest** is a modern, mobile-first file upload and management app built with **Expo** using **Bun** as the package manager. Users can easily **select, validate, upload, preview, and manage image and PDF files** — all securely stored in **Supabase Storage**.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Features
 
-   ```bash
-   npm install
-   ```
+### ✅ File Picker & Validation
+- Select files using `expo-document-picker` or `expo-image-picker`
+- Accepted formats:
+  - Images: `.png`, `.jpg`, `.jpeg`
+  - Documents: `.pdf`
+- Max file size: **5 MB**
+- Smart validation flow:
+  - ❌ No file selected → "No file selected."
+  - ❌ Invalid file → "Only PNG/JPG/PDF under 5 MB allowed."
+  - ✅ Valid file → Proceed to upload
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+### ☁️ Upload to Supabase
+- Uploads files to a Supabase **Storage Bucket**
+- Loading indicators during upload
+- Graceful error handling (network or storage issues)
+- Retrieve **public URLs** for previews
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 👀 File Preview
+- After upload:
+  - 🖼️ Images are previewed directly
+  - 📄 PDFs open in browser via `WebBrowser.openBrowserAsync()`
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+### 📄 List & Manage Files
+- Fetch and display previously uploaded files
+- Show file names and appropriate previews
+- **Swipe-to-delete** using `react-native-gesture-handler`
+  - Delete from Supabase
+  - Optimistically remove from UI
 
-When you're ready, run:
+---
+
+### 🎨 Styling & Code Quality
+- Styled with **NativeWind** (Tailwind CSS for React Native)
+- Linted and formatted with **Biome**
+  - Supports JS/TS/JSON
+  - Recommended rules + custom overrides
+- Built with:
+  - **React Hooks** for state/effects
+  - Modular structure
+  - Reusable components:
+    - `FilePickerButton`
+    - `FilePreview`
+    - `UploadedFileList`
+    - `SwipeableFileItem`
+
+---
+
+### 🌟 Bonus Features
+- ✅ Toast/snackbar on upload/delete success
+- 🔄 Pull-to-refresh for file list
+
+---
+
+## 🛠 Tech Stack
+
+| Tool         | Purpose                           |
+|--------------|-----------------------------------|
+| **Bun**      | Package manager                   |
+| **Expo**     | React Native framework            |
+| **NativeWind** | Tailwind styling for React Native |
+| **Supabase** | File storage backend              |
+| **Biome**    | Linter and formatter              |
+
+
+---
+
+## 🧰 Project Structure
+
+components/
+├── FilePickerButton.tsx
+├── FilePreview.tsx
+├── UploadedFileList.tsx
+└── SwipeableFileItem.tsx
+
+lib/
+└── supabaseClient.ts
+
+
+
+---
+
+## 🏁 Getting Started
+
+### ⚙️ Prerequisites
+
+- [Bun](https://bun.sh/) installed
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) installed globally
+
+### 📦 Install dependencies
 
 ```bash
-npm run reset-project
+bun install
+bun dev
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+Let me know if you’d like:
+- GitHub badges (e.g., build passing, license)
+- A version with working screenshot placeholders
+- A CONTRIBUTING.md file or LICENSE template
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Or I can help you scaffold the repo from scratch if you want to publish it right.
