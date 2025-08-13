@@ -1,50 +1,119 @@
-# Welcome to your Expo app 👋
+# 📁 FileNest
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+**FileNest** is a modern, mobile-first file upload and management app built with **Expo** using **Bun** as the package manager. Users can easily **select, validate, upload, preview, and manage image and PDF files** — all securely stored in **Supabase Storage**.
 
-## Get started
+---
 
-1. Install dependencies
+### 📦 Install the app
+- [FileNest](https://expo.dev/artifacts/eas/s5TRX6qi9BjYDZ9u3GL7Fn.apk)
 
-   ```bash
-   npm install
-   ```
+---
 
-2. Start the app
+## 🚀 Features
 
-   ```bash
-   npx expo start
-   ```
+### ✅ File Picker & Validation
+- Select files using `expo-document-picker` or `expo-image-picker`
+- Accepted formats:
+  - Images: `.png`, `.jpg`, `.jpeg`
+  - Documents: `.pdf`
+- Max file size: **5 MB**
+- Smart validation flow:
+  - ❌ No file selected → "No file selected."
+  - ❌ Invalid file → "Only PNG/JPG/PDF under 5 MB allowed."
+  - ✅ Valid file → Proceed to upload
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### ☁️ Upload to Supabase
+- Uploads files to a Supabase **Storage Bucket**
+- Loading indicators during upload
+- Graceful error handling (network or storage issues)
+- Retrieve **public URLs** for previews
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+### 👀 File Preview
+- After upload:
+  - 🖼️ Images are previewed directly
+  - 📄 PDFs open in browser via `WebBrowser.openBrowserAsync()`
 
-When you're ready, run:
+---
 
-```bash
-npm run reset-project
+### 📄 List & Manage Files
+- Fetch and display previously uploaded files
+- Show file names and appropriate previews
+- **Swipe-to-delete** using `react-native-gesture-handler`
+  - Delete from Supabase
+  - Optimistically remove from UI
+
+---
+
+### 🎨 Styling & Code Quality
+- Styled with **NativeWind** (Tailwind CSS for React Native)
+- Linted and formatted with **Biome**
+  - Supports JS/TS/JSON
+  - Recommended rules + custom overrides
+- Built with:
+  - **React Hooks** for state/effects
+  - Modular structure
+  - Reusable components:
+    - `FilePickerButton`
+    - `FilePreview`
+    - `UploadedFileList`
+    - `SwipeableFileItem`
+
+---
+
+### 🌟 Bonus Features
+- ✅ Toast/snackbar on upload/delete success
+- 🔄 Pull-to-refresh for file list
+
+---
+
+## 🛠 Tech Stack
+
+| Tool         | Purpose                           |
+|--------------|-----------------------------------|
+| **Bun**      | Package manager                   |
+| **Expo**     | React Native framework            |
+| **NativeWind** | Tailwind styling for React Native |
+| **Supabase** | File storage backend              |
+| **Biome**    | Linter and formatter              |
+
+
+---
+
+
+## 🧰 Project Structure
+
+```plaintext
+components/
+├── FilePickerButton.tsx
+├── FilePreview.tsx
+├── UploadedFileList.tsx
+└── SwipeableFileItem.tsx
+
+lib/
+└── supabaseClient.ts
+
+App.tsx
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
 
-To learn more about developing your project with Expo, look at the following resources:
+---
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🏁 Getting Started
 
-## Join the community
+### ⚙️ Prerequisites
 
-Join our community of developers creating universal apps.
+- [Bun](https://bun.sh/) installed
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) installed globally
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### 📦 Install dependencies
+
+```bash
+bun install
+bun dev
+```
+
