@@ -7,42 +7,8 @@ export default function useUpload() {
   const [error, setError] = useState<string | null>(null);
   const [files, setFiles] = useState<any[]>([]);
   const hasFetchedOnce = useRef(false); 
-
-
-  // const uploadFile = async (file: any) => {
-  //   setLoading(true);
-  //   setError(null);
-
-  //   const { valid, error: validationError } = isValidFile(file);
-  //   if (!valid) {
-  //     setError(validationError);
-  //     setLoading(false);
-  //     return;
-  //   }
-
-  //   try {
-  //       LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+Animation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
       
-  //     const { data, error: uploadError } = await supabase.storage
-  //       .from("uploads")
-  //       .upload(`${file.name}`, file.uri, {
-  //         cacheControl: "3600",
-  //         upsert: false,
-  //       });
-
-  //     if (uploadError) throw uploadError;
-
-  //     // Optional: refresh files list after upload
-  //     await fetchFiles(true);
-
-  //     return data;
-  //   } catch (uploadError: any) {
-  //     setError(uploadError.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
 
 
   
@@ -59,11 +25,8 @@ const uploadFile = async (file: any) => {
     console.log("URI:", fileUri);
     console.log("MimeType:", mimeType);
 
-    // Create a FormData object
     const formData = new FormData();
-
-    // Append the file to the FormData object.
-    // The third argument (fileName) is crucial for Supabase to correctly name the file.
+.
     formData.append('file', {
       uri: fileUri,
       name: fileName,
@@ -71,11 +34,10 @@ const uploadFile = async (file: any) => {
     } as any);
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 
-    // Upload the FormData object
     const { data, error } = await supabase.storage
       .from("uploads")
-      .upload(fileName, formData, { // Pass formData as the body
-        contentType: mimeType, // This might be optional when using FormData but good to have
+      .upload(fileName, formData, { 
+        contentType: mimeType, 
         upsert: false,
       });
 
@@ -140,9 +102,9 @@ console.log("filesWithUrls  @@@@@@@@  ", filesWithUrls)
   
 
   const deleteFile = async (fileName: string) => {
-      const filePath = `${fileName}`; // 👈 prepend uploads/
+      const filePath = `${fileName}`; 
 
-  // const cleanPath = filePath.replace(/^\/+/, "");
+  
   LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
 
   const { error } = await supabase.storage.from("uploads").remove([filePath]);
@@ -152,7 +114,7 @@ console.log("filesWithUrls  @@@@@@@@  ", filesWithUrls)
     throw error;
   }
 
-    await fetchFiles(true); // ✅ Directly accessible here
+    await fetchFiles(true); 
   console.log("File deleted successfully");
 };
 
